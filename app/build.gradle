@@ -1,0 +1,78 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "26.0.2"
+    defaultConfig {
+        applicationId "com.example.admin.lifeapp"
+        minSdkVersion 19
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+    }
+
+    compileOptions.encoding = 'ISO-8859-1'
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+        debug {
+            resValue("string", "PORT_NUMBER", "8081")
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += "src/main/kotlin"
+    }
+
+    aaptOptions{
+        cruncherEnabled = false
+    }
+}
+
+kapt {
+    arguments {
+        arg("androidManifestFile", variant.outputs[0].processResourcesTask.manifestFile)
+    }
+}
+
+def AAVersion = "3.1"
+def SupportVersion = "25.3.1"
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    //Kotlin
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    //Android support
+    compile "com.android.support:support-v4:$SupportVersion"
+    compile "com.android.support:appcompat-v7:$SupportVersion"
+    compile "com.android.support:recyclerview-v7:$SupportVersion"
+
+    //Android annotations
+    kapt "org.androidannotations:androidannotations:$AAVersion"
+    compile "org.androidannotations:androidannotations-api:$AAVersion"
+
+    // Anko
+    compile 'org.jetbrains.anko:anko-common:0.9'
+
+    //Android Fast Networking
+    compile 'com.amitshekhar.android:android-networking:1.0.0'
+
+    //Glide
+    compile 'com.github.bumptech.glide:glide:3.8.0'
+
+    //Gson
+    compile 'com.google.code.gson:gson:2.7'
+
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+}
