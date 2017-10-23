@@ -86,6 +86,9 @@ dependencies {
     //https://github.com/journeyapps/zxing-android-embedded
     compile 'com.journeyapps:zxing-android-embedded:3.5.0'
 
+    // EventBus
+    compile 'org.greenrobot:eventbus:3.0.0'
+
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
 }
