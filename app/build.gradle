@@ -73,6 +73,19 @@ dependencies {
     //Gson
     compile 'com.google.code.gson:gson:2.7'
 
+    // QR Code
+
+    //https://github.com/dlazaro66/QRCodeReaderView
+    compile ('com.dlazaro66.qrcodereaderview:qrcodereaderview:2.0.2@aar'){
+        transitive = true
+    }
+
+    //https://github.com/dm77/barcodescanner
+    compile 'me.dm7.barcodescanner:zxing:1.9.8'
+
+    //https://github.com/journeyapps/zxing-android-embedded
+    compile 'com.journeyapps:zxing-android-embedded:3.5.0'
+
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
 }
